@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:15:25 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/08 16:26:15 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:28:31 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,18 @@ class Cat: public Animal
 		/* data */
 		
 	public:
+	
 		/* Consructors */
 		Cat(/* args */);
+		Cat(const Cat &source_obj);
 		
+		Cat &operator=(const Cat &source_obj);
+		
+		/* */
+		STR getType(void) const;
+		
+		/* */
+		void makeSound(void) const;
 		
 		/* Desructor */
 		~Cat();

@@ -6,27 +6,27 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:15:27 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/08 21:26:14 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:31:48 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(/* args */): Animal("Cat")
+Cat::Cat(/* args */): Animal::Animal("Cat")
 {
-	std::cout << GREEN << this->_type << "Default Cat constructoR called " << RESET << std::endl;
+	std::cout << RED << this->_type << GREEN << " (default) constructor called " << RESET << std::endl;
 }
 
 Cat::Cat(const Cat &source_obj)
 {
-	std::cout << YELLOW << "Cat Copy ConstructoR called" << RESET << std::endl;
+	std::cout << YELLOW << "Cat copy constructor called" << RESET << std::endl;
 
 	*this = source_obj;
 }
 
 Cat &Cat::operator=(const Cat &source_obj)
 {
-	std::cout << BLUE << "Cat Assignment OperatoR called" << RESET << std::endl;
+	std::cout << BLUE << "Cat assignment operator called" << RESET << std::endl;
 
 	if (this != &source_obj)
 	{
@@ -35,12 +35,17 @@ Cat &Cat::operator=(const Cat &source_obj)
 	return (*this);
 }
 
-STR Cat::getType() const
+STR Cat::getType(void) const
 {
 	return (this->_type);
 }
 
+void Cat::makeSound(void) const
+{
+	std::cout << RED << this->_type << BLUE << " miavvsss" << RESET << std::endl;
+}
+
 Cat::~Cat()
 {
-	std::cout << GREEN << "Cat destructoR called " << RESET << std::endl;
+	std::cout << RED << this->getType() << GREEN << " destructor called " << RESET << std::endl;
 }

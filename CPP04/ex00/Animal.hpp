@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:18:55 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/08 20:55:33 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:27:58 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #define MAGENTA "\033[35m"      /* Magenta */
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
+
 
 #define STR std::string
 
@@ -53,10 +54,10 @@ class Animal
 		
 		/* Accessors */
 		void	setType(STR type);
-		virtual	STR getType() const;
+		virtual	STR getType(void) const;
 
-		/* */
-		virtual void makeSound(STR type) const;
+		/*  */
+		virtual void makeSound(void) const;
 
 		/* Desructor */		
 		~Animal();

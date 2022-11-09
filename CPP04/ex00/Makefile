@@ -6,17 +6,18 @@
 #    By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 16:14:27 by mgulenay          #+#    #+#              #
-#    Updated: 2022/11/08 16:15:05 by mgulenay         ###   ########.fr        #
+#    Updated: 2022/11/09 22:11:56 by mgulenay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = polymorphism
 
-CC = c++
+CC = g++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = 	main.cpp \
+		Animal.cpp \
 		Cat.cpp \
 		Dog.cpp \
 
