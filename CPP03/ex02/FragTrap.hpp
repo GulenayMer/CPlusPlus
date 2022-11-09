@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 19:32:43 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/05 22:02:34 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:35:46 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@
 class FragTrap: public ClapTrap
 {
 	private:
+	
 		/* data */
 	public:
+
+		/* Cosntructors */
 		FragTrap(/* args */);
 		FragTrap(STR _name);
 		FragTrap(const FragTrap &source_obj);
 	
+		/* Assignemnt Operator*/
 		FragTrap &operator=(const FragTrap &source_obj);
 
-		void highFiveGuys( void );
+		/* */
+		void highFiveGuys(void);
 		
+		/* Desructor */
 		~FragTrap();
 };
-
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:18:50 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/07 22:21:37 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:15:55 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 	
 		STR	_name;
 		int _hit_points;
@@ -57,10 +57,10 @@ class ClapTrap
 		void setEnergyPoints(int amount);
 		void setAttackDamage(int amount);
 
-		STR getName() const;
-		int getHitPoint() const;
-		int getEnergyPoint() const;
-		int getAttackDamage() const;
+		STR getName(void) const;
+		int getHitPoints(void) const;
+		int getEnergyPoints(void) const;
+		int getAttackDamage(void) const;
 
 		/* */
 		void attack(const STR &target);

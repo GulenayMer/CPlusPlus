@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:38:49 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/06 22:47:41 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 14:33:16 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ScavTrap: public ClapTrap
 	
 		/* Constructors */
 		ScavTrap();
-		ScavTrap(STR _name);
+		ScavTrap(STR name);
 
 		/* Copy Constructor */
 		ScavTrap(const ScavTrap &source_obj);
@@ -35,7 +35,7 @@ class ScavTrap: public ClapTrap
 		ScavTrap &operator=(const ScavTrap &source_obj);
 
 		/* */
-		void guardGate();
+		void guardGate(void);
 		void attack(const STR &target);
 
 		/* Destructor */

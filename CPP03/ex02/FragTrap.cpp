@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 19:32:33 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/07 23:20:20 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:01:55 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::FragTrap(/* args */)
 
 FragTrap::FragTrap(STR _name)
 {
-	std::cout << GREEN << "FragTrap constructor is called " << RESET << std::endl;
+	std::cout << RED << _name << GREEN << " FragTrap constructor is called " << RESET << std::endl;
 	
 	this->setName(_name);
 	this->setHitPoints(100);
@@ -48,8 +48,8 @@ FragTrap &FragTrap::operator=(const FragTrap &source_obj)
 	if (this != &source_obj)
 	{
 		this->setName(source_obj.getName());
-		this->setHitPoints(source_obj.getHitPoint());
-		this->setEnergyPoints(source_obj.getEnergyPoint());
+		this->setHitPoints(source_obj.getHitPoints());
+		this->setEnergyPoints(source_obj.getEnergyPoints());
 		this->setAttackDamage(source_obj.getAttackDamage());
 	}
 	return (*this);
@@ -60,13 +60,19 @@ FragTrap &FragTrap::operator=(const FragTrap &source_obj)
 */
 void FragTrap::highFiveGuys( void )
 {
-	if (this->getHitPoint() < 0 || this->getEnergyPoint() < 0)
-		std::cout << RED << this->getName() << BLUE << " cannot high five at the moment! " << RESET << std::endl;
-	else 
+	if (this->getHitPoints() < 0 || this->getEnergyPoints() < 0)
+	{
+		std::cout << RED << this->getName() << BLUE 
+		<< " cannot high five at the moment! " << RESET << std::endl;	
+	}
+	else
+	{
 		std::cout << RED << this->getName() << BLUE << " high five! " << RESET << std::endl;
+		this->setEnergyPoints(this->getEnergyPoints() - 1);
+	} 
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << YELLOW << "FragTrap DestructoR is called" << RESET << std::endl;
+	std::cout << RED << this->getName() << YELLOW << " FragTrap destructor called" << RESET << std::endl;
 }

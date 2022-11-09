@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:18:50 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/06 21:00:07 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:37:17 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ class ClapTrap
 		
 		/* Accessors -- Set & Get */
 		void setName(STR name);
-		STR  getName() const;
-		int  getHitPoint() const;
-		int  getEnergyPoint() const;
-		int  getAttackDamage() const;
+		STR  getName(void) const;
+		int  getHitPoints(void) const;
+		int  getEnergyPoints(void) const;
+		int  getAttackDamage(void) const;
 		
+		/*  */
 		void attack(const STR &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
