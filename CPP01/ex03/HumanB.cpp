@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 21:26:28 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/10/31 16:30:01 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:31:22 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void HumanB::setWeapon(Weapon &weaponB)
 
 void HumanB::attack()
 {
-	std::cout << this->_name_B << "attacks with their " << this->_weaponB_ptr->getType() << std::endl;
+	std::cout << this->_name_B << " attacks with their " << this->_weaponB_ptr->getType() << std::endl;
 }
 
 

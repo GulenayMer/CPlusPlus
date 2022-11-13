@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:18:55 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/12 12:27:19 by mgulenay         ###   ########.fr       */
+/*   Created: 2022/11/11 19:05:10 by mgulenay          #+#    #+#             */
+/*   Updated: 2022/11/12 14:02:05 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include <iostream>
 #include <string>
@@ -31,37 +31,30 @@
 #define STR std::string
 
 
-class Animal
+class Brain
 {
-	private:
-		/* data */				
-
 	protected:
+	
+		STR _ideas[100];
 
-		STR _type;	
-		
 	public:
 		
 		/* Constructors */
-		Animal(/* args */);
-		Animal(STR type);
-		
-		/* Copy Constructor */
-		Animal(const Animal &source_obj);
+		Brain(/* args */);
 
-		/* Assginment Operator*/
-		Animal &operator=(const Animal &source_obj);
-		
-		/* Accessors */
-		void setType(STR type); // virtual ??
-		
-		virtual STR getType(void) const; // without virtual it did not get the right type
+		/* copy constructor */
+		Brain(Brain const &source_obj);
 
-		/*  */
-		virtual void makeSound(void) const; // without virtual, it did not get the right message
+		/* assignment operator */
+		Brain &operator=(const Brain &source_obj);
 
-		/* Desructor */		
-		virtual ~Animal(); // virtual, otherwise it calls only the base destructor 3 times
+		/* setter - getter */
+		void setIdea(STR idea, int i);
+		virtual STR getIdea(int i) const;
+		
+		/* Destructor */
+		~Brain();
 };
+
 
 #endif

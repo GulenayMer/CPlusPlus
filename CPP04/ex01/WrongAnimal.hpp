@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:18:55 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/12 12:27:19 by mgulenay         ###   ########.fr       */
+/*   Created: 2022/11/10 10:36:26 by mgulenay          #+#    #+#             */
+/*   Updated: 2022/11/12 13:10:51 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <iostream>
 #include <string>
-
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -27,41 +26,30 @@
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
 
-
 #define STR std::string
 
-
-class Animal
+class WrongAnimal
 {
 	private:
-		/* data */				
-
-	protected:
-
-		STR _type;	
+	
+		STR _type_w;
 		
 	public:
 		
-		/* Constructors */
-		Animal(/* args */);
-		Animal(STR type);
+		WrongAnimal(/* args */);
+		WrongAnimal(STR type_w);
 		
-		/* Copy Constructor */
-		Animal(const Animal &source_obj);
+		WrongAnimal(const WrongAnimal &source_obj);
+		WrongAnimal &operator=(const WrongAnimal &source_obj);
 
-		/* Assginment Operator*/
-		Animal &operator=(const Animal &source_obj);
+		void makeSound(void);
 		
-		/* Accessors */
-		void setType(STR type); // virtual ??
+		STR getType_w(void) const; // virtual
+		void setType_w(STR type_w);
+
+		void makeSound_w(void) const; // virtual
 		
-		virtual STR getType(void) const; // without virtual it did not get the right type
-
-		/*  */
-		virtual void makeSound(void) const; // without virtual, it did not get the right message
-
-		/* Desructor */		
-		virtual ~Animal(); // virtual, otherwise it calls only the base destructor 3 times
+		virtual ~WrongAnimal();
 };
 
 #endif

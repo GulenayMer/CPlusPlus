@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:15:25 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/12 12:38:33 by mgulenay         ###   ########.fr       */
+/*   Created: 2022/11/10 10:40:04 by mgulenay          #+#    #+#             */
+/*   Updated: 2022/11/12 12:51:06 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
 
-#include "Animal.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-class Cat: public Animal
+#include <iostream>
+#include <string>
+#include "WrongAnimal.hpp"
+
+class WrongCat: public WrongAnimal
 {
 	private:
-		/* data */
-		
+
+		STR _type_w;
+
 	public:
-	
-		/* Consructors */
-		Cat(/* args */);
+		WrongCat(/* args */);
+		WrongCat(const WrongCat &source_obj);
+		WrongCat &operator=(const WrongCat &source_obj);
+
+	 
+		STR getType_w(void) const;
+		void setType_w(STR type_w);
 		
-		/* Copy Constructor */
-		Cat(const Cat &source_obj);
+		void makeSound_w(void) const;
 		
-		/* Assignment Operator*/
-		Cat &operator=(const Cat &source_obj);
-		
-		/* Accessor */
-		STR getType(void) const;
-		
-		/* */
-		void makeSound(void) const;
-		
-		/* Desructor */
-		~Cat();
+		~WrongCat();
 };
+
 
 #endif

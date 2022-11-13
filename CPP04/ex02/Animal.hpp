@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:18:55 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/12 12:27:19 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:54:38 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@
 
 #define STR std::string
 
-
+/* 
+	abstract class cannot be instantiated
+	usually implemented as a class that has 1 or more pure
+	virtual (abstract) functions.
+	A pure virtual func. is one which must be overridden by any concrete
+	(non-abstract) derived class.
+	This is indicated in the declaration with the syntax " = 0 "
+*/
 class Animal
 {
 	private:
@@ -58,7 +65,7 @@ class Animal
 		virtual STR getType(void) const; // without virtual it did not get the right type
 
 		/*  */
-		virtual void makeSound(void) const; // without virtual, it did not get the right message
+		virtual void makeSound(void) const = 0; // abstract, it cannot be instantiable
 
 		/* Desructor */		
 		virtual ~Animal(); // virtual, otherwise it calls only the base destructor 3 times
