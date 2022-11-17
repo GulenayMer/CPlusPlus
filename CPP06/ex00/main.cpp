@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:38:52 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/17 15:54:44 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:52:48 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,48 @@
 */
 
 
+/*
+	++ strtod() ; convert string to double
+		parses the C-string str interpreting its content as a floating point nb, 
+		& returns its value as a double.
+*/
+
+#include <iostream>
+#include <string>
+
+int main(int argc, char *argv[])
+{
+	std::string aStr = argv[1];
+
+	double doubleNum = strtod(aStr.c_str(), NULL);
+
+	
+	/* 	char 
+		+ find_first_of() : Searches the string for the first character that 
+			matches any of the characters specified in its arguments.
+
+	*/
+	
+	if ((aStr.find_first_of("0123456789") == std::string::npos) && aStr.length() == 1)
+		std::cout << "char: '" << aStr[0] << "'" << std::endl;
+	else if (isprint(doubleNum))
+		std::cout << "char: '" << static_cast<char>(doubleNum) << "'" << std::endl;
+	else if (doubleNum == 127 || (doubleNum < 32 && doubleNum > 0))
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: impossible" << std::endl;
+	
+	/*  int
+		
+	*/
+	if (!doubleNum && aStr[0] != '0')
+		std::cout << "int: " << static_cast<int>(aStr[0]) << std::endl;
+	else if (doubleNum > INT_MAX || doubleNum < INT_MIN || isnan(doubleNum))
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << atoi(aStr.c_str()) << std::endl;
+
+
+	return (0);	
+}
 
