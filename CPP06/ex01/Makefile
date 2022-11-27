@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/27 20:21:44 by mgulenay          #+#    #+#              #
-#    Updated: 2022/11/27 20:22:06 by mgulenay         ###   ########.fr        #
+#    Created: 2022/11/23 17:17:07 by mgulenay          #+#    #+#              #
+#    Updated: 2022/11/27 15:00:36 by mgulenay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = template
+NAME = serialize
 
 CC = g++
 

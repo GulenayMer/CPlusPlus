@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/27 20:36:39 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/27 20:42:35 by mgulenay         ###   ########.fr       */
+/*   Created: 2022/11/27 15:06:41 by mgulenay          #+#    #+#             */
+/*   Updated: 2022/11/27 15:52:20 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef BASE_HPP
+#define BASE_HPP
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -28,25 +30,18 @@
 
 #define STR std::string
 
-/*
-	a function template iter that takes 3 parameters & returns nothing.
-	- the address of an array
-	- the length of the array
-	- a function that will be call on every element of the array 
-*/
-template <typename T>
-
-void iter(T *array, size_t length, void(*f)(const T &))
+class Base
 {
-	for (size_t i = 0; i < length; i++)
-		(*f)(array[i]);
-}
+	public:
+	
+	   	virtual ~Base(){};
+		
+};
 
-template <typename T>
-void print(const T &x)
-{
-	std::cout << x << std::endl;
-	return ;
-}
+
+Base	*generate(void);
+void	identify(Base *p);
+void	identify(Base &p);
+
 
 #endif

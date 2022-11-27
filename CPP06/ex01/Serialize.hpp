@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Serialize.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/27 20:36:39 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/27 20:42:35 by mgulenay         ###   ########.fr       */
+/*   Created: 2022/11/27 13:37:34 by mgulenay          #+#    #+#             */
+/*   Updated: 2022/11/27 14:32:45 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef SERIALIZE_HPP
+#define SERIALIZE_HPP
 
+#include <stdint.h>
 #include <iostream>
+#include <cstring>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -28,25 +30,13 @@
 
 #define STR std::string
 
-/*
-	a function template iter that takes 3 parameters & returns nothing.
-	- the address of an array
-	- the length of the array
-	- a function that will be call on every element of the array 
-*/
-template <typename T>
 
-void iter(T *array, size_t length, void(*f)(const T &))
+struct Data
 {
-	for (size_t i = 0; i < length; i++)
-		(*f)(array[i]);
-}
-
-template <typename T>
-void print(const T &x)
-{
-	std::cout << x << std::endl;
-	return ;
-}
+	STR		name;
+	int 	age;
+	int		grade;
+	float 	average;
+}; 
 
 #endif

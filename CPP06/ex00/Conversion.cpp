@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:27 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/26 15:29:11 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:25:17 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,26 @@ int	check_char(STR arg)
 void	cast_literals(STR arg)
 {
 
-	double  d_num;
-	float 	f_num;
+	double  d_value;
+	float 	f_value;
 	
 	/* strtod -- convert a str to a floating-point num */
-	d_num = strtod(arg.c_str(), NULL);
+	d_value = strtod(arg.c_str(), NULL);
 	
 	/*  ------------  char -------------------- */
 	if ( check_char(arg) == 1)
 		std::cout << "char: '" << arg[0] << "'" << std::endl;
-	else if ( check_pseudos(arg) == 1)
+	else if ( check_pseudos(arg) == 1 || d_value < 0 || d_value > 127)
 			std::cout << "char: impossible" << std::endl;
-	else if (isprint(d_num))
-		std::cout << "char: '" <<  static_cast<char>(d_num) << "'" <<  std::endl;
-	else if (d_num == 127 || (d_num < 32 && d_num >= 0))
+	else if (isprint(d_value))
+		std::cout << "char: '" <<  static_cast<char>(d_value) << "'" <<  std::endl;
+	else if (d_value == 127 || (d_value < 32 && d_value >= 0))
 		std::cout << "char: Non displayable" <<  std::endl;
 
 	/* ---------------- int ---------------- */
-	if ( !d_num && arg[0] != '0' )
+	if ( !d_value && arg[0] != '0' )
 		std::cout << "int: " << static_cast<int>(arg[0]) << std::endl;
-	else if ( check_pseudos(arg) == 1 )
+	else if ( check_pseudos(arg) == 1 || d_value > std::numeric_limits<int>::max() || d_value < std::numeric_limits<int>::min())
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << atoi(arg.c_str()) << std::endl;
@@ -75,17 +75,17 @@ void	cast_literals(STR arg)
 	
 	std::cout.precision(1);
 	
-	f_num = strtof(arg.c_str(), NULL);
+	f_value = strtof(arg.c_str(), NULL);
 
-	if (!f_num && arg[0] != '0')
+	if (!f_value && arg[0] != '0')
 		std::cout << std::fixed << "float: " << static_cast<float>(arg[0]) << "f" << std::endl;
 	else
-		std::cout << std::fixed << "float: " << f_num << "f" << std::endl;
+		std::cout << std::fixed << "float: " << f_value << "f" << std::endl;
 
 
 	/* ----------- double ------------ */
-	if (!d_num && arg[0] != '0')
+	if (!d_value && arg[0] != '0')
 		std::cout << "double: " << static_cast<double>(arg[0]) << "f" << std::endl;
 	else
-		std::cout << "double: " << d_num << std::endl;
+		std::cout << "double: " << d_value << std::endl;
 }
