@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:24 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 13:28:25 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 12:10:01 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 // #include <stdexcept>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -30,7 +30,7 @@
 
 #define STR std::string
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -56,7 +56,6 @@ class Bureaucrat
 		int getGrade(void) const;
 		
 		/* set */
-		void setName(STR name);
 		void setGrade(int grade);
 		
 		/* + & - */
@@ -64,8 +63,10 @@ class Bureaucrat
 		void decrementGrade(void);
 
 		/* sign */
-		void signForm(const Form &form_obj);
-		void executeForm(Form const & form);
+		void signForm(AForm &form_obj) const;
+
+		/* execute */
+		void executeForm(AForm const & form);
 
 		/* Exception Classes */
 		class GradeTooHighException : public std::exception

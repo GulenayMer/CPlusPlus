@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:24 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 09:28:31 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:51:14 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-// #include <stdexcept>
 #include "Form.hpp"
+#include <stdexcept>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -43,28 +43,26 @@ class Bureaucrat
 		
 		/* Constructors */
 		Bureaucrat();
-		Bureaucrat(STR name, int grade);
+		Bureaucrat(const STR name, int grade);
 		Bureaucrat(const Bureaucrat &source_obj);
 		Bureaucrat &operator=(const Bureaucrat &source_obj);
 
-		
 		/* Destructor */
 		~Bureaucrat();
+		
+		/* set */
+		void setGrade(int grade);
 		
 		/* get */
 		STR getName(void) const;
 		int getGrade(void) const;
-		
-		/* set */
-		void setName(STR name);
-		void setGrade(int grade);
-		
+			
 		/* + & - */
 		void incrementGrade(void);
 		void decrementGrade(void);
 
 		/* sign */
-		void signForm(const Form &form_obj);
+		void signForm(Form &form_obj) const;
 		
 		/* Exception Classes */
 		class GradeTooHighException : public std::exception

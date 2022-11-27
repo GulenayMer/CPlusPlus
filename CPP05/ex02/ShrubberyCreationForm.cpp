@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:01:13 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 15:02:15 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:23:42 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): _form_target("Shrubbery"), Form::Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm():  AForm::AForm("SCF", 145, 137), _form_target("Shrubbery")
 {
-	// std::cout << RED << this->_form_target << GREEN 
-	// << " (default form) constructor called " << RESET << std::endl;
+	/* std::cout << RED << this->_form_target << GREEN 
+	<< " (default) constructor" << " wtih grades " << RED << this->getSign() << " & " << this->getExec()
+	<< GREEN << " with sign status " << RED << this->getIfSigned() << GREEN << " created" << RESET << std::endl; */
 }
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(STR target): _form_target(target), Form::Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(STR target): AForm::AForm("SCF", 145, 137), _form_target(target)
 {
-	std::cout << " ShrubberyCreationForm created " << std::endl;
+	std::cout << GREEN << "ShrubberyCreationForm created with target to " << RED << this->_form_target << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src_obj): _form_target(src_obj._form_target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src_obj): AForm::AForm(src_obj.getName(), src_obj.getSign(), src_obj.getExec()), _form_target(src_obj._form_target)
 {
 	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
-	
 	//*this = src_obj;
 }
 
@@ -47,39 +47,43 @@ STR ShrubberyCreationForm::getTarget(void) const
 	return(this->_form_target); 
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &exec_obj) const
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIfSigned() == false)
-		throw Form::FormNotSignedException();
-	if (this->getExec() < exec_obj.getGrade())
-		throw Form::GradeTooLowException();
-	std::cout << " some sounds " << std::endl;
-	
-	STR name = this->getTarget() + " _schrubbery";
-	
-	std::ofstream outfile(name);
-	outfile << "                     - - -" << std::endl;
-	outfile << "                   -        -  -     --    -" << std::endl;
-	outfile << "                -                 -         -  -" << std::endl;
-	outfile << "                                -" << std::endl;
-	outfile << "                               -                --" << std::endl;
-	outfile << "               -          -            -              -" << std::endl;
-	outfile << "               -            '-,        -               -" << std::endl;
-	outfile << "               -              'b      *" << std::endl;
-	outfile << "                -              '$    #-                --" << std::endl;
-	outfile << "               -    -           $:   #:               -" << std::endl;
-	outfile << "             --      -  --      *#  @):        -   - -" << std::endl;
-	outfile << "                          -     :@,@):   ,-**:'   -" << std::endl;
-	outfile << "              -      -,         :@@*: --**'      -   -" << std::endl;
-	outfile << "                       '#o-    -:(@'-@*'  -" << std::endl;
-	outfile << "               -  -       'bq,--:,@@*'   ,*      -  -" << std::endl;
-	outfile << "                          ,p$q8,:@)'  -p*'      -" << std::endl;
-	outfile << "                   -     '  - '@@Pp@@*'    -  -" << std::endl;
-	outfile << "                   -  - --    Y7'.'     -  -" << std::endl;
-	outfile << "                              :@):." << std::endl;
-	outfile << "                             .:@:'." << std::endl;
-	outfile << "                           .::(@:.      -Sam Blumenstein-" << std::endl;
-	outfile.close();
+		throw AForm::FormNotSignedException();
+	else
+	{
+		if (this->getExec() < executor.getGrade())
+			throw AForm::GradeTooLowException();
+		else
+		{
+			STR name = this->getTarget() + " _schrubbery";
+			std::ofstream outfile(name);
+			
+			outfile << "                     - - -" << std::endl;
+			outfile << "                   -        -  -     --    -" << std::endl;
+			outfile << "                -                 -         -  -" << std::endl;
+			outfile << "                                -" << std::endl;
+			outfile << "                               -                --" << std::endl;
+			outfile << "               -          -            -              -" << std::endl;
+			outfile << "               -            '-,        -               -" << std::endl;
+			outfile << "               -              'b      *" << std::endl;
+			outfile << "                -              '$    #-                --" << std::endl;
+			outfile << "               -    -           $:   #:               -" << std::endl;
+			outfile << "             --      -  --      *#  @):        -   - -" << std::endl;
+			outfile << "                          -     :@,@):   ,-**:'   -" << std::endl;
+			outfile << "              -      -,         :@@*: --**'      -   -" << std::endl;
+			outfile << "                       '#o-    -:(@'-@*'  -" << std::endl;
+			outfile << "               -  -       'bq,--:,@@*'   ,*      -  -" << std::endl;
+			outfile << "                          ,p$q8,:@)'  -p*'      -" << std::endl;
+			outfile << "                   -     '  - '@@Pp@@*'    -  -" << std::endl;
+			outfile << "                   -  - --    Y7'.'     -  -" << std::endl;
+			outfile << "                              :@):." << std::endl;
+			outfile << "                             .:@:'." << std::endl;
+			outfile << "                           .::(@:.      -Sam Blumenstein-" << std::endl;
+			outfile.close();
+		}
+	}
 }
 
 

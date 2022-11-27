@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:16:33 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 09:28:50 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:21:54 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ class Form
 {
 	private:
 	
-		STR 		_formName;
-		bool 		_checkSigned;
+		const STR 	_formName;
 		const int	_grade_sign; // required grade to sign
 		const int	_grade_exec; // required grade to execute
+		bool 		_checkSigned;
 
 	public:
 	
@@ -51,17 +51,14 @@ class Form
 
 
 		/* sign */
-		void	signForm(const Bureaucrat &bur_obj);
-		int		requiredSign();
-		
+		void	beSigned(const Bureaucrat &bur_obj);
+	
 
 		/* get */
-		bool	getIfSigned() const;
+		bool	getIfSigned(void) const;
 		STR		getName(void) const;
-		int		getSign() const;
-		int		getExec() const;
-		
-		
+		int		getSign(void) const;
+		int		getExec(void) const;
 		
 		/* Exception Classes */
 		class GradeTooHighException : public std::exception

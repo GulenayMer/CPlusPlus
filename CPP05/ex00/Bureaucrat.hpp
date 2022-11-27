@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:24 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 09:29:02 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:46:43 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-// #include <stdexcept>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -48,13 +47,13 @@ class Bureaucrat
 		/* Destructor */
 		~Bureaucrat();
 		
+		/* set */
+		//void setName(STR const name); name is const
+		void setGrade(int grade);
+		
 		/* get */
 		STR getName(void) const;
 		int getGrade(void) const;
-		
-		/* set */
-		void setName(STR name);
-		void setGrade(int grade);
 		
 		/* + & - */
 		void incrementGrade(void);

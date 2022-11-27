@@ -3,42 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:16:19 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 12:17:28 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:05:58 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(): _formName("A Form"), _grade_exec(2), _grade_sign(3), _checkSigned(false)
+/* default constructor, -- signed value has to be false at the construction */
+Form::Form(): _formName("A Form"), _grade_sign(3), _grade_exec(2), _checkSigned(false)
 {
-	// std::cout << RED << this->_name << GREEN 
-	// << " (default form) constructor called " << RESET << std::endl;
+	/* std::cout << RED << this->_formName << GREEN 
+	<< " (default) constructor" << " wtih grades " << RED << this->_grade_exec << RED << this->_grade_sign 
+	<< GREEN << " with sign status " << RED << this->_checkSigned << GREEN << " called " << RESET << std::endl; */
 }
 
+/* constructor with parameters -- signed value has to be false at the construction */
 Form::Form(const STR formName, const int grade_sign, const int grade_exec):
- _formName(formName), _grade_exec(grade_exec), _grade_sign(grade_sign), _checkSigned(false)
+ _formName(formName), _grade_sign(grade_sign), _grade_exec(grade_exec), _checkSigned(false)
 {
 	if (this->_grade_sign < 1 || this->_grade_exec < 1)
 		throw Form::GradeTooHighException();
 	if (this->_grade_sign > 150 || this->_grade_exec > 150)
 		throw Form::GradeTooLowException();
-	std::cout << " From created " << std::endl;
-	
+	std::cout << RED << this->_formName << GREEN << " created wtih grades " << RED << this->_grade_sign << " & " 
+	<< RED << this->_grade_exec << GREEN << " with sign status " << RED 
+	<< this->_checkSigned << RESET << std::endl;
 }
 
+/* copy constructor */
 Form::Form(const Form &source_obj):
- _formName(source_obj._formName), _grade_exec(source_obj._grade_exec), _grade_sign(source_obj._grade_sign)
+ _formName(source_obj._formName), _grade_sign(source_obj._grade_sign), _grade_exec(source_obj._grade_exec)
 {
 	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
-	
 	this->_checkSigned = source_obj._checkSigned;
 	//*this = source_obj;
 }
 		
-
+/* assignment operator */
 Form &Form::operator=(const Form &source_obj)
 {
 	std::cout << BLUE << "Assignment Operator called" << RESET << std::endl;
@@ -56,27 +60,30 @@ STR Form::getName(void) const
 	return(this->_formName);
 }
 
-bool Form::getIfSigned() const
+bool Form::getIfSigned(void) const
 {
 	return(this->_checkSigned);
 }
 
-
-int Form::getSign() const
+/* get required grade to sign */
+int Form::getSign(void) const
 {
 	return(this->_grade_sign);
 }
 
-
-int Form::getExec() const
+/* get required grade to execute */
+int Form::getExec(void) const
 {
 	return(this->_grade_exec);
 }
 		
 
-void Form::signForm(const Bureaucrat &bur_obj)
+void Form::beSigned(const Bureaucrat &bur_obj)
 {
-	try
+	if(bur_obj.getGrade() > this->getSign())
+			throw Form::GradeTooLowException();
+	this->_checkSigned = true;
+/* 	try
 	{
 		if(bur_obj.getGrade() > this->getSign())
 			throw Form::GradeTooLowException();
@@ -84,8 +91,8 @@ void Form::signForm(const Bureaucrat &bur_obj)
 	}
 	catch(Form::GradeTooLowException &e)
 	{
-		std::cout << e.what() << std::endl;
-	}
+		std::cout << GREEN << "Exception: " << RED << e.what() << RESET << std::endl;
+	} */
 }
 
 std::ostream &operator<<(std::ostream& output_stream, const Form &form_obj)
@@ -94,19 +101,21 @@ std::ostream &operator<<(std::ostream& output_stream, const Form &form_obj)
 	
 	if (form_obj.getIfSigned() == true)
 	{
-		sign = " signed";
-		return(output_stream << "Form " << form_obj.getName() << ", " << sign << std::endl);
+		sign = "is signed";
+		return(output_stream << BLUE << "Form " << YELLOW << form_obj.getName() << BLUE << " with required sign and execution grades " 
+		<< YELLOW << form_obj.getSign() << " & " << form_obj.getExec() << ", " << YELLOW << sign << RESET << std::endl);
 	}
 	else
 	{
 		sign = " could not be signed";
-		return(output_stream << "Form " << form_obj.getName() << ", " << sign << ", check min requested grade to sign " << form_obj.getSign() << ", and min requested grade to execute " << form_obj.getExec() << std::endl);
+		return(output_stream << YELLOW << "Form " << RED << form_obj.getName() << YELLOW << ", " 
+			<< sign << ", min requested grade to sign: " 
+			<< RED << form_obj.getSign() << YELLOW << ", and min requested grade to execute: " 
+			<< RED << form_obj.getExec() << RESET << std::endl);
 	}
 }
 
-
 Form::~Form()
 {
-	
-	std::cout << RED << this->_formName << GREEN << " destruction called" << RESET << std::endl;
+	std::cout << RED << this->_formName << GREEN << " destructor called" << RESET << std::endl;
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:16:33 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 13:11:19 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:34:47 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -32,33 +32,35 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 	
-		STR 		_formName;
-		bool 		_checkSigned;
+		const STR 	_formName;
 		const int	_grade_sign; // required grade to sign
 		const int	_grade_exec; // required grade to execute
+		bool 		_checkSigned;
 
 	public:
 	
-		Form();
-		Form(const STR formName, const int grade_sign, const int grade_exec);
-		Form(const Form &source_obj);
-		Form &operator=(const Form &source_obj);
-		virtual ~Form(); 
+		AForm();
+		AForm(const STR formName, const int grade_sign, const int grade_exec);
+		AForm(const AForm &source_obj);
+		AForm &operator=(const AForm &source_obj);
+		virtual ~AForm(); 
 
 
 		/* sign */
-		virtual void	signForm(const Bureaucrat &bur_obj);
-		virtual void 	execute(const Bureaucrat &exec_obj) const = 0;
+		void	beSigned(const Bureaucrat &bur_obj);
+
+		/* execute */
+		virtual void 	execute(Bureaucrat const &executor) const = 0;
 		
 		/* get */
-		virtual bool	getIfSigned() const;
-		virtual STR		getName(void) const;
-		virtual int		getSign() const;
-		virtual int		getExec() const;
+		bool	getIfSigned(void) const;
+		STR		getName(void) const;
+		int		getSign(void) const;
+		int		getExec(void) const;
 		
 		
 		/* Exception Classes */
@@ -66,7 +68,7 @@ class Form
 		{
 			public:
 			
-				const char *what() const throw()
+				virtual const char *what() const throw()
 				{
 					return "Grade is too high";
 				}
@@ -75,7 +77,7 @@ class Form
 		class GradeTooLowException : public std::exception
 		{
 			public: 
-				const char *what() const throw()
+				virtual const char *what() const throw()
 				{
 					return "Grade is too low";
 				}
@@ -84,7 +86,7 @@ class Form
 		class FormNotSignedException: public std::exception
 		{
 			public:
-				const char *what() const throw()
+				virtual const char *what() const throw()
 				{
 					return "Form is not signed";
 				}
@@ -95,7 +97,7 @@ class Form
 
 
 
-std::ostream &operator<<(std::ostream &output_stream, const Form &form_obj);
+std::ostream &operator<<(std::ostream &output_stream, const AForm &form_obj);
 
 
 #endif

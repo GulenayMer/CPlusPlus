@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:01:25 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 14:03:19 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/21 20:30:31 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include <fstream>
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class ShrubberyCreationForm: public Form
+class ShrubberyCreationForm: public AForm
 {
 	private:
 	
@@ -34,9 +34,9 @@ class ShrubberyCreationForm: public Form
 	
 	~ShrubberyCreationForm();
 
-
-	void execute(const Bureaucrat &exec_obj) const;
 	STR getTarget(void) const;
+
+	void 	execute(Bureaucrat const &executor) const;
 	
 };
 

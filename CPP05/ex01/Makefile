@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 18:18:36 by mgulenay          #+#    #+#              #
-#    Updated: 2022/11/15 19:15:55 by mgulenay         ###   ########.fr        #
+#    Updated: 2022/11/22 15:17:06 by mgulenay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = form
 
 CC = g++
 
@@ -29,6 +29,9 @@ RM = rm -f
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
+$(OBJ): %.o: %.cpp	
+		$(CC) -c $(FLAGS) $< -o $@
+		
 clean:
 		$(RM) $(OBJ)
 

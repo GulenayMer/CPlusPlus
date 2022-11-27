@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 18:18:36 by mgulenay          #+#    #+#              #
-#    Updated: 2022/11/14 18:19:18 by mgulenay         ###   ########.fr        #
+#    Updated: 2022/11/22 15:17:45 by mgulenay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ RM = rm -f
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+
+$(OBJ): %.o: %.cpp	
+		$(CC) -c $(FLAGS) $< -o $@
 
 clean:
 		$(RM) $(OBJ)

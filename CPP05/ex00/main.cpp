@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:21:24 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/15 18:42:02 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:20:24 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ int main()
 {
 	try
 	{
-		Bureaucrat theBureau("Merve ", 1);
-		std::cout << " ------------ " <<  std::endl;
+		Bureaucrat theBureau("Merve ", 21);
 		std::cout << theBureau;
-		std::cout << " ------------ " <<  std::endl;
 		theBureau.incrementGrade();
-		std::cout << " ------------ " <<  std::endl;
+		//theBureau.decrementGrade();
+		//std::cout << "Grade set to " << theBureau.getGrade() << std::endl;
 		std::cout << theBureau;
-		std::cout << " ------------ " <<  std::endl;
 		std::cout << std::endl;
 		
+	 	/* 
 		std::cout << " ========== " <<  std::endl;
-		
-	/* 	Bureaucrat anotherB;
+		Bureaucrat anotherB("Jane", 149);
 		std::cout << " ------------ " <<  std::endl;
 		std::cout << anotherB;
 		anotherB.decrementGrade();
@@ -39,6 +37,6 @@ int main()
 	}
 	catch(std::exception &e)
 	{
-		std::cerr << "Exception caught " << e.what() << std::endl;
+		std::cerr << RED << "Exception caught: " << YELLOW << e.what() << RESET << std::endl;
 	}
 }

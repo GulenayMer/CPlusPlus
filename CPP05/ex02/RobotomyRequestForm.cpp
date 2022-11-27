@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:59:21 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/16 14:51:31 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:05:06 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm(): _form_target("Robotomy"), Form::Form("Robotomy", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(): AForm::AForm("RRF", 72, 45), _form_target("Robot")
 {
-	// std::cout << RED << this->_form_targer << GREEN 
-	// << " (default form) constructor called " << RESET << std::endl;
+	/* std::cout << RED << this->_form_target << GREEN 
+	<< " (default) constructor" << " wtih grades " << RED << this->getSign() << " & " << this->getExec()
+	<< GREEN << " with sign status " << RED << this->getIfSigned() << GREEN << " created" << RESET << std::endl; */
 }
 
-RobotomyRequestForm::RobotomyRequestForm(STR target): _form_target(target), Form::Form("Robotomy", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(STR target): AForm::AForm("RRF", 72, 45), _form_target(target)
 {
-		std::cout << " PresidentalPardonForm created " << std::endl;
-
+	std::cout << GREEN << "RobotomyRequestForm created with target to " << RED << this->_form_target << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src_obj): _form_target(src_obj._form_target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src_obj): AForm::AForm(src_obj.getName(), src_obj.getSign(), src_obj.getExec()), _form_target(src_obj._form_target)
 {
 	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
 	
@@ -48,18 +48,24 @@ STR RobotomyRequestForm::getTarget(void) const
 	return(this->_form_target); 
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &exec_obj) const
+void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIfSigned() == false)
-		throw Form::FormNotSignedException();
-	if (this->getExec() < exec_obj.getGrade())
-		throw Form::GradeTooLowException();
-	std::cout << " some drilling noice -- capcapcaaap " << std::endl;
-	srand(time(NULL));
-	if ((rand() % 2) == 0)
-		std::cout << " Robotomoy request failed " << std::endl;
+		throw AForm::FormNotSignedException();
 	else
-		std::cout << this->getTarget() << " : has been robotomized successfully " << std::endl;
+	{
+		if (executor.getGrade() > this->getExec())
+			throw AForm::GradeTooLowException();
+		else
+		{
+			std::cout << BLUE << " some drilling noice -- capcapcaaap " << RESET << std::endl;
+			srand(time(NULL));
+			if ((rand() % 2) == 0)
+				std::cout << MAGENTA << this->getTarget() << " : has been robotomized successfully " << RESET << std::endl;
+			else
+				std::cout << " Robotomoy request failed " << std::endl;
+		}
+	}
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
