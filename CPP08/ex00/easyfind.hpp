@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <cstdlib>
-#include <set>
+#include <vector>
+#include <deque>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -18,6 +18,18 @@
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
 
+
+/* Exception Class */
+class NoMatchesException : public std::exception
+{
+	public :
+	const char *what() const throw()
+	{
+		return ("No occurrence is found");
+	};
+};
+
+
 /*
 	a func. accepts a type T., takes 2 parameters -- type T and an integer.
 
@@ -27,15 +39,21 @@
 */
 template <typename T>
 
-void easyfind(T &contType, int toFind)
+typename T::iterator easyfind(T &contType, int toFind)
 {
 	typename T::iterator iter;
 	iter = find(contType.begin(), contType.end(), toFind);
-	if (iter != contType.end())
-		std::cout << MAGENTA << "we found a occurrence of " << toFind << " at " << std::distance(contType.begin(), iter) << RESET << std::endl;
-	else
-		std::cout << RED << "no occurrence is found" << RESET << '\n';
+	if (iter == contType.end())
+		throw NoMatchesException();
+	else if (iter != contType.end())
+		std::cout << MAGENTA << "We found a occurrence of " << toFind << " at " << std::distance(contType.begin(), iter) << RESET << std::endl;
+	return (iter);
 }
 
+
+	/* if (iter != contType.end())
+		std::cout << MAGENTA << "We found a occurrence of " << toFind << " at " << std::distance(contType.begin(), iter) << RESET << std::endl;
+	else
+		std::cout << RED << "No occurrence is found" << RESET << '\n'; */
 
 #endif

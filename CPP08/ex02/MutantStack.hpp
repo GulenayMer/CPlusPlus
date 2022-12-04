@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:50:33 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/28 19:17:11 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/12/03 18:06:00 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class MutantStack: public std::stack<T>
 
 	/* creating an iterator */
 	typedef typename std::stack<T>::container_type::iterator iterator;
+	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 	
 	// The std::stack's container object corresponds to the (protected) data member c
 		iterator begin(void) 
@@ -59,6 +60,15 @@ class MutantStack: public std::stack<T>
 			return this->c.end(); 
 		}
 
+		const_iterator begin(void) const 
+		{ 
+			return this->c.begin(); 
+		}
+		
+		const_iterator end(void) const 
+		{ 
+			return this->c.end(); 
+		}
 };
 
 template <typename T>

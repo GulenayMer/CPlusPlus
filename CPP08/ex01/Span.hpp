@@ -6,7 +6,7 @@
 /*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:07 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/28 18:40:42 by mgulenay         ###   ########.fr       */
+/*   Updated: 2022/12/03 16:50:53 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ class Span
 
 		/* funcs */
 		void addNumber(int new_nb);
-		unsigned int shortestSpan(void);
-		unsigned int longestSpan(void);
-		unsigned int getSize(void);
+		int shortestSpan(void);
+		int longestSpan(void);
+		int getSize(void);
 		void printVector(void);
 		void addMany(unsigned int N);
 
