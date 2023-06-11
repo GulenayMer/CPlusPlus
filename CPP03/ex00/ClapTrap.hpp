@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgulenay <mgulenay@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: mgulenay <mgulenay@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:18:50 by mgulenay          #+#    #+#             */
-/*   Updated: 2022/11/09 11:37:17 by mgulenay         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:55:45 by mgulenay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
